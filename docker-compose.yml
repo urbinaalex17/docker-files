@@ -10,4 +10,16 @@ services:
       MYSQL_DATABASE: mysql_db
       MYSQL_USER: mysql_user
       MYSQL_PASSWORD: mysql_pass
+  app:
+    image: php:7.0-apache
+    volumes:
+      - app_data:/var/www/html
+      - app_logs:/var/logs/apache2
+    restart: always
+    links: 
+      - db
 
+volumes: 
+  db_data:
+  app_data:
+  app_logs:
